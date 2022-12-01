@@ -2,8 +2,8 @@ import kotlin.math.min
 
 fun main() {
   fun calories(input: List<String>): List<Int> {
-    val elfs = input.split({ it.isNotBlank() }, true)
-    return elfs.map { stringCalories -> stringCalories.sumOf { it.toInt() } }
+    val elves = input.split({ it.isNotBlank() }, true)
+    return elves.map { stringCalories -> stringCalories.sumOf { it.toInt() } }
   }
 
   fun part1(input: List<String>): Int {
