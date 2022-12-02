@@ -18,6 +18,7 @@ private data class Round(val opponentPlay: Play, val yourPlay: Play, val result:
     object ROCK : Play()
     object PAPER : Play()
     object SCISSORS : Play()
+
     companion object {
       fun valueOf(value: String): Play {
         return when (value) {
@@ -36,12 +37,12 @@ private data class Round(val opponentPlay: Play, val yourPlay: Play, val result:
     object WIN : RoundResult()
 
     companion object {
-      fun valueOf(input: String): RoundResult {
-        return when (input) {
+      fun valueOf(value: String): RoundResult {
+        return when (value) {
           "X" -> LOST
           "Y" -> DRAW
           "Z" -> WIN
-          else -> throw IllegalArgumentException("Unexpected game outcome")
+          else -> throw IllegalArgumentException("No object main.Round.RoundResult.$value")
         }
       }
     }
@@ -87,7 +88,6 @@ private data class Round(val opponentPlay: Play, val yourPlay: Play, val result:
           Play.PAPER -> Play.SCISSORS
           Play.SCISSORS -> Play.ROCK
         }
-
         RoundResult.LOST -> when (opponentPlay) {
           Play.ROCK -> Play.SCISSORS
           Play.PAPER -> Play.ROCK
@@ -104,6 +104,7 @@ private data class Game(val rounds: List<Round>) {
   }
 
   var opponentPlayScore: (Round.Play) -> Int = { 0 }
+
   var yourPlayScore: (Round.Play) -> Int = {
     when (it) {
       Round.Play.ROCK -> 1
@@ -111,6 +112,7 @@ private data class Game(val rounds: List<Round>) {
       Round.Play.SCISSORS -> 3
     }
   }
+
   var resultScore: (Round.RoundResult) -> Int = {
     when (it) {
       Round.RoundResult.LOST -> 0
