@@ -11,15 +11,15 @@ repositories {
     mavenCentral()
 }
 
-tasks {
+kotlin {
     sourceSets {
-        main {
-            java.srcDirs("src")
+        val main by getting
+        val test by getting {
+            dependsOn(main)
+            dependencies {
+                implementation(kotlin("test"))
+            }
         }
-    }
-
-    wrapper {
-        gradleVersion = "7.6"
     }
 }
 
