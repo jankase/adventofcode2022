@@ -9,7 +9,7 @@ internal data class Rucksack(val priorityItems: List<Int>) : ICommonItems {
         val chunked = priorityItems.chunked(priorityItems.size / 2).toTypedArray()
         if (chunked.size != 2) error("expected only two pieces")
         val result = chunked[0].toMutableList()
-        result.retainAll(chunked[1])
+        result.retainAll(chunked[1].toSet())
         return result.distinct()
     }
 }

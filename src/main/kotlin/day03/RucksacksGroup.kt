@@ -10,7 +10,7 @@ internal data class RucksacksGroup(val rucksacks: List<Rucksack>) : ICommonItems
         val rucksacksItems = rucksacks.map { it.priorityItems }.toTypedArray()
         val result = rucksacksItems[0].toMutableList()
         for (i in 1 until rucksacksItems.size) {
-            result.retainAll(rucksacksItems[i])
+            result.retainAll(rucksacksItems[i].toSet())
         }
         return result.distinct()
     }
