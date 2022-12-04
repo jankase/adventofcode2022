@@ -5,7 +5,6 @@ import org.junit.Test
 import readTestResourceFile
 import kotlin.test.assertEquals
 
-
 internal class ElvesGroupTest {
 
     private lateinit var elvesGroup: ElvesGroup

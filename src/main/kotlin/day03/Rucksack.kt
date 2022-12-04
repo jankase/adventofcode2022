@@ -20,4 +20,3 @@ private val Char.priorityValue: Int
         in 'A'..'Z' -> this - 'A' + 27
         else -> error("wrong character")
     }
-
