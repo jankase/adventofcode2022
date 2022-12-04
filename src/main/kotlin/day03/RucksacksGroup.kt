@@ -1,6 +1,6 @@
 package day03
 
-internal data class RucksacksGroup(val rucksacks: List<Rucksack>): ICommonItems {
+internal data class RucksacksGroup(val rucksacks: List<Rucksack>) : ICommonItems {
 
     companion object {
         fun valueOf(input: List<String>) = RucksacksGroup(input.map { Rucksack.valueOf(it) })
