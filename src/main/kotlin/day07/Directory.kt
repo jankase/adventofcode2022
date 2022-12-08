@@ -1,6 +1,6 @@
 package day07
 
-internal class Directory(override val name: String): FileSystemItem {
+internal class Directory(override val name: String) : FileSystemItem {
     companion object {
         fun valueOf(value: String): Directory {
             val matchResult = """/dir (\w+)/gm""".toRegex().find(value) ?: error("It is not directory")

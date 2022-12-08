@@ -39,5 +39,4 @@ internal sealed class FileSystemInstruction {
     }
 }
 
-
 private operator fun Regex.contains(text: CharSequence): Boolean = this.matches(text)
