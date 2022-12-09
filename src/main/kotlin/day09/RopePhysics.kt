@@ -7,13 +7,16 @@ internal class RopePhysics(private val moveDirections: List<MoveDirection>) {
         }
     }
 
-    fun performMoveInstructions(): Set<Position> {
-        val rope = Rope(Position(0, 0), Position(0, 0))
+    fun performMoveInstructions(numberOfKnots: Int = 2): Set<Position> {
+        val rope = Rope(numberOfKnots)
         val result = moveDirections.fold(setOf(Position(0, 0))) { acc, moveDirection ->
             val tailMoves = rope.move(moveDirection)
-            println(moveDirection)
-            println(tailMoves)
-            acc + tailMoves
+            val result = acc + tailMoves
+            if (numberOfKnots > 2) {
+                println("Move direction: $moveDirection")
+                println("Added ${result - acc}")
+            }
+            result
         }
         return result
     }
