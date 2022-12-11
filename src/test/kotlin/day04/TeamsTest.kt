@@ -1,14 +1,14 @@
 package day04
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class TeamsTest {
     private lateinit var teams: Teams
 
-    @Before
+    @BeforeTest
     fun setup() {
         teams = Teams.valueOf(readTestResourceFile("Day04"))
     }

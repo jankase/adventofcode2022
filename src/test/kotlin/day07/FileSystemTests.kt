@@ -1,15 +1,15 @@
 package day07
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class FileSystemTests {
 
     private lateinit var sut: FileSystem
 
-    @Before
+    @BeforeTest
     fun setup() {
         sut = FileSystem(FileSystemInstruction.valueOf(readTestResourceFile("Day07")))
     }

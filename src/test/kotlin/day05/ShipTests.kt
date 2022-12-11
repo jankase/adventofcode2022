@@ -1,15 +1,15 @@
 package day05
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
 import split
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ShipTests {
 
     private lateinit var ship: Ship
-    @Before
+    @BeforeTest
     fun setup() {
         val input = readTestResourceFile("Day05").split({ it.isNotBlank() }, true).first()
         ship = Ship.parseLoad(input)

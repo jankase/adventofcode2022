@@ -1,6 +1,6 @@
 package day05
 
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ContainerMoveInstructionTest {

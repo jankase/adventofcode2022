@@ -1,7 +1,7 @@
 package day07
 
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class FileSystemInstructionTest {

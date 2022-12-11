@@ -1,15 +1,15 @@
 package day02
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class GameTests {
 
     private lateinit var lines: List<String>
 
-    @Before
+    @BeforeTest
     fun setup() {
         lines = readTestResourceFile("Day02")
     }

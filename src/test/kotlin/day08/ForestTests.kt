@@ -1,15 +1,15 @@
 package day08
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ForestTests {
 
     private lateinit var forest: Forest
 
-    @Before
+    @BeforeTest
     fun setup() {
         forest = Forest.valueOf(readTestResourceFile("Day08"))
     }

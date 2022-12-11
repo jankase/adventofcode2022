@@ -1,14 +1,14 @@
 package day01
 
-import org.junit.Before
-import org.junit.Test
 import readTestResourceFile
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class ElvesGroupTest {
 
     private lateinit var elvesGroup: ElvesGroup
-    @Before
+    @BeforeTest
     fun setup() {
         elvesGroup = ElvesGroup.valueOf(readTestResourceFile("Day01"))
     }

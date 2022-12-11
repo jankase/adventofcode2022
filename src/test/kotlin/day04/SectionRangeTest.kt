@@ -1,6 +1,6 @@
 package day04
 
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 

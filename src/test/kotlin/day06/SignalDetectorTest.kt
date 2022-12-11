@@ -1,6 +1,6 @@
 package day06
 
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class SignalDetectorTest {
