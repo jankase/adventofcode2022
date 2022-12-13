@@ -13,7 +13,11 @@ repositories {
 
 kotlin {
     sourceSets {
-        val main by getting
+        val main by getting {
+            dependencies {
+                files("$buildDir/resources")
+            }
+        }
         val test by getting {
             dependsOn(main)
             dependencies {
