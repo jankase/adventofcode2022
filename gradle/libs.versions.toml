@@ -8,7 +8,9 @@ reflections = "0.10.2"
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
 kotlin-lint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktLintVersion" }
 kotlin-lint-idea = { id = "org.jlleitschuh.gradle.ktlint-idea", version.ref = "ktLintVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
 
 [libraries]
 mordant = { group = "com.github.ajalt.mordant", name = "mordant", version.ref = "mordant" }
 reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections" }
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.4.1" }

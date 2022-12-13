@@ -27,7 +27,7 @@ open class Day private constructor(
     fqd: FullyQualifiedDate,
     val title: String
 ) {
-    constructor(day: Int, year: Int, title: String = "Unknown", terminal: Terminal = aocTerminal) : this(
+    constructor(day: Int, year: Int, title: String = "Unknown") : this(
         FullyQualifiedDate(day, Event(year)), title
     )
 
@@ -37,9 +37,10 @@ open class Day private constructor(
     private val header: Unit by lazy { if (verbose) println("--- AoC $year, Day $day $title ---\n") }
     private val rawInput: List<String> by lazy { globalTestData?.split("\n") ?: AOC.getPuzzleInput(day, year) }
 
-    private val input: List<String> by lazy { rawInput.show("Raw") }
-
+    val input: List<String> by lazy { rawInput.show("Raw") }
     var groupDelimiter: (String) -> Boolean = String::isEmpty
+    var onlyDataLines: (String) -> Boolean = String::isNotBlank
+
     val inputAsGroups: List<List<String>> by lazy { groupedInput(groupDelimiter) }
     val part1: Any? by lazy { part1() }
     val part2: Any? by lazy { part2() }
@@ -71,7 +72,7 @@ open class Day private constructor(
         runWithTiming("2") { part2 }
     }
 
-    private fun <T: Any?> List<T>.show(type: String, maxLines: Int = 10): List<T> {
+    private fun <T : Any?> List<T>.show(type: String, maxLines: Int = 10): List<T> {
         if (!verbose) return this
         header
 
@@ -99,7 +100,7 @@ open class Day private constructor(
             val cut = (maxLines - 1) / 2
             (0 until maxLines - cut - 1).forEach { f(it, this[it]!!) }
             if (size > maxLines) println("....")
-            (lastIndex - cut + 1 .. lastIndex).forEach { f(it, this[it]!!) }
+            (lastIndex - cut + 1..lastIndex).forEach { f(it, this[it]!!) }
         }
     }
 

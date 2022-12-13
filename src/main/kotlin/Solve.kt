@@ -1,8 +1,8 @@
-import com.github.ajalt.mordant.rendering.TextColors.*
+// Inspired by code from Olaf Gottschalk
+
+import com.github.ajalt.mordant.rendering.TextColors
 import com.github.ajalt.mordant.rendering.TextStyles
 import kotlin.reflect.KClass
-
-// Inspired by code from Olaf Gottschalk
 
 var globalTestData: String? = null
     get() = field?.also {
@@ -10,7 +10,7 @@ var globalTestData: String? = null
         field = null
     }
 
-inline fun <reified T: Day> solve(test: SolveDsl<T>.() -> Unit = {}) {
+inline fun <reified T : Day> solve(test: SolveDsl<T>.() -> Unit = {}) {
     if (SolveDsl(T::class).apply(test).isEverythingOK())
         create(T::class).solve()
 }
@@ -51,13 +51,13 @@ data class TestData(val input: String, val expectedPart1: Any?, val expectedPart
             Triple(1, { day.part1() }, "$expectedPart1").takeIf { expectedPart1 != null },
             Triple(2, { day.part2() }, "$expectedPart2").takeIf { expectedPart2 != null }
         ).all { (part, partFun, expectation) ->
-            println(gray("Checking part $part against $expectation"))
+            println(TextColors.gray("Checking part $part against $expectation"))
             val actual = partFun()
             val match = actual == Day.NotYetImplemented || "$actual" == expectation
             if (!match) {
-                println("Expected: ${brightRed(expectation)}")
-                println("  Actual: ${brightRed("$actual")}")
-                println(yellow("Check demo ${TextStyles.bold("input")} and demo ${TextStyles.bold("expectation")}!"))
+                println("Expected: ${TextColors.brightRed(expectation)}")
+                println("  Actual: ${TextColors.brightRed("$actual")}")
+                println(TextColors.yellow("Check demo ${TextStyles.bold("input")} and demo ${TextStyles.bold("expectation")}!"))
             }
             match
         }

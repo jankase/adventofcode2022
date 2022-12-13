@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.lint)
     @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
     alias(libs.plugins.kotlin.lint.idea)
+    @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+    alias(libs.plugins.kotlin.serialization)
 }
 
 repositories {
@@ -18,6 +20,7 @@ kotlin {
                 implementation(kotlin("reflect"))
                 implementation(libs.mordant)
                 implementation(libs.reflections)
+                implementation(libs.kotlin.serialization.json)
             }
         }
         val test by getting {
