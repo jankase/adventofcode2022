@@ -5,12 +5,13 @@ import extractAllIntegers
 import extractAllLongs
 import lcm
 import product
+import solve
 
 typealias WorryLevel = Long
 fun String.toWorryLevel(): WorryLevel? = toLongOrNull()
 infix fun WorryLevel.divisibleBy(divisor: Int) = this % divisor == 0L
 
-class Day11 : Day(2022, 11) {
+class Day11 : Day(11, 2022, "Monkey in the Middle") {
 
     private val monkeys = inputAsGroups.mapIndexed(::createMonkeyIndexed)
     private val startItems: List<List<WorryLevel>> = inputAsGroups.map { it[1].extractAllLongs() }
@@ -66,19 +67,49 @@ class Day11 : Day(2022, 11) {
         }
     }
 
-    fun part1(): Long {
+    override fun part1(): Long {
         val inspections = letMonkeysPlay(20, ::playWithItemWorryLevel)
         return inspections.sortedDescending().take(2).product()
     }
 
-    fun part2(): Long {
+    override fun part2(): Long {
         val inspections = letMonkeysPlay(10000, ::playWithItemWorryLevelWithoutLimits)
         return inspections.sortedDescending().take(2).product()
     }
 }
 
 fun main() {
-    val day = Day11()
-    println(day.part1())
-    println(day.part2())
+    solve<Day11> {
+        day11DemoInput part1 10605 part2 2713310158
+    }
 }
+
+private val day11DemoInput = """
+Monkey 0:
+  Starting items: 79, 98
+  Operation: new = old * 19
+  Test: divisible by 23
+    If true: throw to monkey 2
+    If false: throw to monkey 3
+
+Monkey 1:
+  Starting items: 54, 65, 75, 74
+  Operation: new = old + 6
+  Test: divisible by 19
+    If true: throw to monkey 2
+    If false: throw to monkey 0
+
+Monkey 2:
+  Starting items: 79, 60, 97
+  Operation: new = old * old
+  Test: divisible by 13
+    If true: throw to monkey 1
+    If false: throw to monkey 3
+
+Monkey 3:
+  Starting items: 74
+  Operation: new = old + 3
+  Test: divisible by 17
+    If true: throw to monkey 0
+    If false: throw to monkey 1
+""".trimIndent()

@@ -1,6 +1,9 @@
+import com.github.ajalt.mordant.rendering.TextColors
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
 
 /**
  * Reads lines from the given input txt file.
@@ -45,7 +48,15 @@ fun String.sequenceContainedLongs(includeNegativeNumbers: Boolean): Sequence<Lon
     (if (includeNegativeNumbers) numberRegex else positiveNumberRegex).findAll(this)
         .mapNotNull { it.value.toLongOrNull() ?: warn("Number too large for Integer: ${it.value}") }
 
-private fun <T> warn(msg: String): T? {
+fun <T> warn(msg: String): T? {
     println("WARNING: $msg")
     return null
+}
+
+@OptIn(ExperimentalTime::class)
+inline fun runWithTiming(part: String, f: () -> Any?) {
+    val (result, duration) = measureTimedValue(f)
+    with(aocTerminal) {
+        success("\nSolution $part: (took $duration)\n" + TextColors.brightBlue("$result"))
+    }
 }

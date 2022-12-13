@@ -15,7 +15,9 @@ kotlin {
     sourceSets {
         val main by getting {
             dependencies {
-                files("$buildDir/resources")
+                implementation(kotlin("reflect"))
+                implementation(libs.mordant)
+                implementation(libs.reflections)
             }
         }
         val test by getting {

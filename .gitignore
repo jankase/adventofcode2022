@@ -204,3 +204,4 @@ gradle-app.setting
 
 src/**/*.txt
 !src/test/**/*.txt
+puzzles

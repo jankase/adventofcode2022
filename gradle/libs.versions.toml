@@ -1,8 +1,14 @@
 [versions]
 kotlinVersion = "1.7.22"
 ktLintVersion = "11.0.0"
+mordant = "2.0.0-beta9"
+reflections = "0.10.2"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
 kotlin-lint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktLintVersion" }
 kotlin-lint-idea = { id = "org.jlleitschuh.gradle.ktlint-idea", version.ref = "ktLintVersion" }
+
+[libraries]
+mordant = { group = "com.github.ajalt.mordant", name = "mordant", version.ref = "mordant" }
+reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections" }
