@@ -35,4 +35,3 @@ infix fun Int.safeTimes(other: Int) = (this * other).also {
 infix fun Long.safeTimes(other: Long) = (this * other).also {
     check(other == 0L || it / other == this) { "Long overflow at $this * $other" }
 }
-

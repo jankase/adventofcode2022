@@ -35,7 +35,6 @@ infix fun Int.safeTimes(other: Long) = (this.toLong() * other).also {
     check(other == 0L || it / other == this.toLong()) { "Long overflow at $this * $other" }
 }
 
-
 private val numberRegex = """(-+)?\d+""".toRegex()
 private val positiveNumberRegex = """\d+""".toRegex()
 fun String.sequenceContainedIntegers(includeNegativeNumbers: Boolean): Sequence<Int> =

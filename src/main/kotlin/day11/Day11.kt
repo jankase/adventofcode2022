@@ -46,7 +46,6 @@ class Day11 : Day(2022, 11) {
         return inspections
     }
 
-
     private fun createMonkeyIndexed(index: Int, description: List<String>): Monkey {
         val (operation, test, ifTrue, ifFalse) = description.drop(2)
         return Monkey(

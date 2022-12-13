@@ -7,4 +7,3 @@ data class Monkey(
     val ifTrueDestinationID: Int,
     val ifFalseDestinationID: Int
 )
-
